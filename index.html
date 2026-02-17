@@ -2,16 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"
+  />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Trash Cam V2</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="app" id="app">
+  <main class="app">
     <video id="vid" autoplay playsinline muted></video>
-    <canvas id="out"></canvas>
+
+    <!-- screen canvas (letterboxed display) -->
+    <canvas id="screen"></canvas>
 
     <header class="top">
       <div class="brand">
@@ -25,6 +30,18 @@
     </header>
 
     <section class="panel" id="panel">
+      <div class="row tight">
+        <div class="pill">
+          <div class="pillLabel">Format</div>
+          <select id="format">
+            <option value="auto" selected>AUTO</option>
+            <option value="portrait">PORTRAIT</option>
+            <option value="landscape">LANDSCAPE 16:9</option>
+            <option value="square">SQUARE 1:1</option>
+          </select>
+        </div>
+      </div>
+
       <div class="togGrid">
         <label class="tog"><input type="checkbox" id="t_blocks" checked><span>Blocks</span></label>
         <label class="tog"><input type="checkbox" id="t_bit" checked><span>Bitcrush</span></label>
@@ -46,7 +63,7 @@
         </div>
         <div class="srow">
           <div class="slabel">CHROMATIC</div>
-          <input id="s_chroma" type="range" min="0" max="100" value="50">
+          <input id="s_chroma" type="range" min="0" max="100" value="25">
         </div>
         <div class="srow">
           <div class="slabel">PALETTE</div>
@@ -54,7 +71,7 @@
         </div>
         <div class="srow">
           <div class="slabel">RES</div>
-          <input id="s_res" type="range" min="120" max="720" value="260">
+          <input id="s_res" type="range" min="160" max="900" value="360">
         </div>
       </div>
 
@@ -68,9 +85,10 @@
       <div class="actions">
         <button id="bend" class="btn primary">BEND</button>
         <button id="snap" class="btn">SNAP</button>
+        <button id="hud" class="btn">HUD</button>
       </div>
 
-      <div class="tip" id="tip">Open in Safari + HTTPS. Hit <b>BEND</b> for a burst.</div>
+      <div class="tip" id="tip">AUTO will flip when you rotate your phone.</div>
     </section>
   </main>
 
