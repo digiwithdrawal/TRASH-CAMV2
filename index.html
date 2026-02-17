@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Trash Cam V2</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <div class="dot"></div>
+      <div>
+        <div class="title">TRASH CAM V2</div>
+        <div class="sub">CCD CORRUPTION • PHOTO</div>
+      </div>
+    </div>
+    <button id="flip" class="btn">Flip</button>
+  </header>
+
+  <main class="stage">
+    <video id="v" autoplay playsinline muted></video>
+    <canvas id="c"></canvas>
+
+    <div class="hud">
+      <div class="row">
+        <button id="snap" class="btn primary">SNAP</button>
+        <button id="bend" class="btn warn">BEND</button>
+        <button id="random" class="btn">Random</button>
+      </div>
+
+      <div class="panel">
+        <div class="row tight">
+          <label class="tog"><input id="e_rgb" type="checkbox" checked /><span>RGB Split</span></label>
+          <label class="tog"><input id="e_tear" type="checkbox" checked /><span>Line Tear</span></label>
+          <label class="tog"><input id="e_blocks" type="checkbox" checked /><span>Blocks</span></label>
+        </div>
+
+        <div class="row tight">
+          <label class="tog"><input id="e_bit" type="checkbox" checked /><span>Bitcrush</span></label>
+          <label class="tog"><input id="e_feedback" type="checkbox" checked /><span>Feedback</span></label>
+          <label class="tog"><input id="e_noise" type="checkbox" checked /><span>Noise</span></label>
+        </div>
+
+        <div class="row tight">
+          <label class="tog"><input id="e_false" type="checkbox" checked /><span>False Color</span></label>
+          <label class="tog"><input id="e_bars" type="checkbox" checked /><span>Data Bars</span></label>
+          <label class="tog"><input id="e_date" type="checkbox" checked /><span>Date Stamp</span></label>
+        </div>
+
+        <div class="sliders">
+          <div class="srow">
+            <div class="slabel">Grit</div>
+            <input id="grit" type="range" min="0" max="100" value="62" />
+          </div>
+          <div class="srow">
+            <div class="slabel">Corrupt</div>
+            <input id="corrupt" type="range" min="0" max="100" value="62" />
+          </div>
+          <div class="srow">
+            <div class="slabel">Chromatic</div>
+            <input id="chrom" type="range" min="0" max="100" value="60" />
+          </div>
+          <div class="srow">
+            <div class="slabel">Palette</div>
+            <input id="palette" type="range" min="0" max="100" value="75" />
+          </div>
+          <div class="srow">
+            <div class="slabel">Res</div>
+            <input id="res" type="range" min="220" max="720" value="360" />
+          </div>
+        </div>
+
+        <div class="presets">
+          <button class="chip" data-preset="mall">Mall CCD</button>
+          <button class="chip" data-preset="broken">Broken Buffer</button>
+          <button class="chip" data-preset="neon">Neon Smash</button>
+          <button class="chip" data-preset="cheap">Cheap Digi</button>
+        </div>
+
+        <div class="tip" id="tip">
+          Open in <b>Safari</b> + HTTPS. Hit <b>BEND</b> for a burst.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
